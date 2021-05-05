@@ -110,10 +110,10 @@ Use the getInningScore() function below to do the following:
   1. Receive a callback function - you will pass in the inning function from task 2 as your argument 
   2. Return an object with a score for home and a score for away that populates from invoking the inning callback function */
 
-function getInningScore(callback) {
+function getInningScore(inning) {
   return {
-    Home: callback(),
-    Away: callback(),
+    Home: inning(),
+    Away: inning(),
   };
 }
 console.log(getInningScore(inning));
@@ -159,9 +159,18 @@ Use the scoreboard function below to do the following:
 ]  
   */
 
-function scoreboard(/* CODE HERE */) {
-  /* CODE HERE */
+function scoreboard(getInningScore, inning, num) {
+  const boxScore = [];
+  for (let i = 0; i < num; i++) {
+    boxScore.push(
+      `Inning ${i + 1}: ${getInningScore(inning).Away} - Home: ${
+        getInningScore(inning).Home
+      }`
+    );
+  }
+  return boxScore;
 }
+console.log(scoreboard(getInningScore, inning, 9));
 
 /* 🛑🛑🛑🛑🛑 Please do not modify anything below this line 🛑🛑🛑🛑🛑 */
 function foo() {
