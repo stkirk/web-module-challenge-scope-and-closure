@@ -161,15 +161,15 @@ Use the scoreboard function below to do the following:
 
 function scoreboard(inningScoreCB, inningCB, num) {
   const boxScore = [];
-  let homeScore = 0;
-  let awayScore = 0;
+  let homeScore = 0; //counter for total home team score
+  let awayScore = 0; //counter for total away team score
   for (let i = 0; i < num; i++) {
-    const currentScore = inningScoreCB(inningCB);
-    homeScore = homeScore + currentScore.Home;
-    awayScore = awayScore + currentScore.Away;
+    const currentScore = inningScoreCB(inningCB); //each time loop runs the functions passed in generate a random object containing the home and away scores for one inning called currentScore
+    homeScore = homeScore + currentScore.Home; //each loop adds the current score from that inning
+    awayScore = awayScore + currentScore.Away; //to the total home and away score counters outside of the loop, the scores for that loop's inning are currentScore.Home and currentScore.Away
     boxScore.push(
       `Inning ${i + 1}: Away ${currentScore.Away} - Home ${currentScore.Home}`
-    );
+    ); //Away and Home currentscores are pushed in a string to the boxScore array num times
   }
   if (homeScore === awayScore) {
     boxScore.push(
@@ -177,7 +177,7 @@ function scoreboard(inningScoreCB, inningCB, num) {
     );
   } else {
     boxScore.push(`Final Score: Away ${awayScore} - Home ${homeScore}`);
-  }
+  } //outside the loop, one more push is made to boxScore depending on if the game is tied or not, we use the homeScore and awayScore counters from outside the loop to add all the looped innings and give us a final total
   return boxScore;
 }
 console.log(scoreboard(getInningScore, inning, 9));
