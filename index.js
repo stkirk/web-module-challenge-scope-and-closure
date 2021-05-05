@@ -41,7 +41,7 @@ console.log(
 
   3. In what scenario would the counter1 code be preferable? In what scenario would 
      counter2 be better?  
-     
+
      -counter1 would be preferrable where the value of count should only be updated within the scope of counter1. counter 2 would be better is the value of count needed to be accessed by functions other than counter2.
 */
 
@@ -53,7 +53,7 @@ function counterMaker() {
   };
 }
 
-const counter1 = counterMaker(); //why does invoking counter1() return a number? invoking counterMaker() just returns the child function itself
+const counter1 = counterMaker(); //why does invoking counter1() return a number when invoking counterMaker() just returns the child function itself?
 
 // counter2 code
 let count = 0;
@@ -71,9 +71,10 @@ Use the inning function below to do the following:
 NOTE: This will be a callback function for the tasks below
 */
 
-function inning(/*Code Here*/) {
-  /*Code Here*/
+function inning() {
+  return Math.floor(Math.random() * 3);
 }
+console.log(inning());
 
 /* ⚾️⚾️⚾️ Task 3: finalScore() ⚾️⚾️⚾️
 Use the finalScore function below to do the following:
@@ -89,7 +90,7 @@ Use the finalScore function below to do the following:
 }
 */
 
-function finalScore(/*code Here*/) {
+function finalScore(callback, num) {
   /*Code Here*/
 }
 
