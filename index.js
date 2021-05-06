@@ -14,11 +14,11 @@
  */
 
 function processFirstItem(stringList, callback) {
-  return callback(stringList[0]);
+  return callback(stringList[0]); //returns an invoked function with the first word in the array from parameter 1 passed in
 }
 console.log(
   processFirstItem(["foo", "bar"], function (str) {
-    return str + str;
+    return str + str; //runs the higher order function which starts with the passed in callback, the callback looks outside for str, it sees that the higher order function has passed that in with a value of stringlist[0], stringlist is the first parameter in the higher order function and its index 0 value is 'foo'. foo then takes the place of str in the callback which then returns 'foo' + 'foo'
   })
 );
 
