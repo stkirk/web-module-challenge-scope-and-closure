@@ -32,17 +32,17 @@ console.log(
   
   1. What is the difference between counter1 and counter2?
 
-    - counter1 nests a function within a function and its purpose is to return the inner function. Also, the variable, count, being updated by the child function is locally scoped to counterMaker itself and not globally availible. counter2 is a solo function that when invoked just updates the value of the global variable count.
+    - counter1 is essentially a function expression for counter, which is nested inside of counterMaker. In counter1, count is scoped within its parent function counterMaker and not globally availible. counter2 is a function declaration that when invoked just updates the value of the global variable count.
 
   2. Which of the two uses a closure? How can you tell?
 
     - counter2 uses a closure, it looks outside of its scope for the value of count
-    - counter1 also uses a closure when the child function reaches into its parent function's scope for the value of count.
+    - counter1 itself is not a closure, but a closure happens when counter reaches into its parent function's scope for the value of count.
 
   3. In what scenario would the counter1 code be preferable? In what scenario would 
      counter2 be better?  
 
-     -counter1 would be preferrable where the value of count should only be updated within the scope of counter1. counter 2 would be better is the value of count needed to be accessed by functions other than counter2.
+     -counter1 would be preferrable where the value of count should only be updated within the scope of counter1. counter 2 would be better if the value of count needed to be accessed by things other than counter2.
 */
 
 // counter1 code
@@ -53,7 +53,7 @@ function counterMaker() {
   };
 }
 
-const counter1 = counterMaker(); //why does invoking counter1() return a number when invoking counterMaker() just returns the child function itself?
+const counter1 = counterMaker(); //why does invoking counter1() return a number when invoking counterMaker() just returns the child function itself? counter = the inside function of counterMaker since when counterMaker is invoked it returns counter. so when counter1 is declared, it is essentially a function expressiong for counter(). When you invoke that counter1 function expression is runs the counter() function and iterates count.
 
 // counter2 code
 let count = 0;
